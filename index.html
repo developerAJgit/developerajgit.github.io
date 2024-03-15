@@ -1622,13 +1622,11 @@
 			// Choose a default theme if no preference is stored
 			// (e.g., body.classList.add(lightThemeClass);)
 		}
-        function openFullscreenImage(imageUrl, linkUrl) {
+		function openFullscreenImage(imageUrl, linkUrl) {
             const fullscreenImage = document.createElement('div');
             fullscreenImage.classList.add('fullscreen-image');
             fullscreenImage.innerHTML = `
-                <a href="${linkUrl}" target="_blank">
-                    <img src="${imageUrl}" alt="Fullscreen Image">
-                </a>
+                <img src="${imageUrl}" alt="Fullscreen Image" onclick="window.open('${linkUrl}', '_blank')">
                 <button onclick="closeFullscreenImage()">Close</button>
             `;
             document.body.appendChild(fullscreenImage);
