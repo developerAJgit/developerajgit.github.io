@@ -3,83 +3,94 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fullscreen Image with Link</title>
+<title>Fullscreen Image Viewer</title>
 <style>
-    /* CSS for fullscreen image */
-    .fullscreen-image {
+    /* Styles for fullscreen modal */
+    .fullscreen-modal {
         display: none;
         position: fixed;
-        top: 0;
+        z-index: 9999;
         left: 0;
+        top: 0;
         width: 100%;
         height: 100%;
         background-color: rgba(0, 0, 0, 0.9);
-        z-index: 9999;
+        overflow: hidden;
     }
-    .fullscreen-image img {
+    .fullscreen-modal img {
         display: block;
-        max-width: 90%;
-        max-height: 90%;
         margin: auto;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
+        max-width: 100%;
+        max-height: 100%;
     }
     .close-icon {
         position: absolute;
-        top: 20px;
-        right: 20px;
+        top: 15px;
+        right: 15px;
         color: #fff;
+        font-size: 24px;
         cursor: pointer;
+        z-index: 99999;
     }
 </style>
 </head>
 <body>
 
-<!-- HTML structure for the image list -->
-<div class="portfolio_list">
-    <ul class="gallery_zoom">
-        <li class="PowerAPPS">
-            <div class="list_inner">
-                <div class="image" onclick="openFullscreenImage(event, 'img/portfolio/Essentials.PNG', 'https://www.linkedin.com/in/developeraj/details/certifications/')">
-                    <img src="img/thumbs/1-1.jpg" alt="Image 1">
-                    <div class="main" data-img-url="img/portfolio/Essentials.PNG"></div>
-                </div>
-                <div class="overlay"></div>
-                <div class="details">
-                    <span>Essentials</span>
-                    <h3>LinkedIN</h3>
-                </div>
-            </div>
-        </li>
-        <!-- Add more list items here -->
-    </ul>
-</div>
+<script>
+    function openFullscreenImage(imageSrc, linkUrl) {
+        var img = document.getElementById('fullscreen-img');
+        var modal = document.getElementById('fullscreen-modal');
+        img.src = imageSrc;
+        modal.style.display = 'block';
+        // Enable full screen mode
+        if (img.requestFullscreen) {
+            img.requestFullscreen();
+        } else if (img.mozRequestFullScreen) { /* Firefox */
+            img.mozRequestFullScreen();
+        } else if (img.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+            img.webkitRequestFullscreen();
+        } else if (img.msRequestFullscreen) { /* IE/Edge */
+            img.msRequestFullscreen();
+        }
 
-<!-- Fullscreen image container -->
-<div class="fullscreen-image" onclick="closeFullscreen()">
+        // Open link URL when clicking on the full image
+        img.onclick = function() {
+            window.open(linkUrl, '_blank');
+        };
+    }
+
+    function closeFullscreen() {
+        var modal = document.getElementById('fullscreen-modal');
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) { /* Firefox */
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { /* IE/Edge */
+            document.msExitFullscreen();
+        }
+        modal.style.display = 'none';
+    }
+</script>
+
+<div id="fullscreen-modal" class="fullscreen-modal">
     <span class="close-icon" onclick="closeFullscreen()">&times;</span>
-    <a id="fullscreen-link" href="#" target="_blank"></a>
     <img id="fullscreen-img" src="" alt="Fullscreen Image">
 </div>
 
-<script>
-    // JavaScript function to open the image in fullscreen mode
-    function openFullscreenImage(event, imageSrc, link) {
-        var fullscreenImg = document.getElementById("fullscreen-img");
-        fullscreenImg.src = imageSrc;
-        document.getElementById("fullscreen-link").href = link;
-        document.querySelector('.fullscreen-image').style.display = "block";
-        event.stopPropagation();
-    }
-
-    // JavaScript function to close the fullscreen image
-    function closeFullscreen() {
-        document.querySelector('.fullscreen-image').style.display = "none";
-    }
-</script>
+<!-- Example usage -->
+<div class="list_inner">
+    <div class="image" onclick="openFullscreenImage('img/portfolio/Essentials.PNG', 'https://www.linkedin.com/in/developeraj/details/certifications/')">
+        <img src="img/thumbs/1-1.jpg" alt="" />
+        <div class="main" data-img-url="img/portfolio/Essentials.PNG"></div>
+    </div>
+    <div class="overlay"></div>
+    <div class="details">
+        <span>Essentials</span>
+        <h3>LinkedIN</h3>
+    </div>
+</div>
 
 </body>
 </html>
