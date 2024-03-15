@@ -25,12 +25,50 @@
     }
     .close-icon {
         position: absolute;
-        top: 15px;
-        right: 15px;
+        top: 20px;
+        right: 20px;
         color: #fff;
-        font-size: 24px;
+        font-size: 32px;
         cursor: pointer;
         z-index: 99999;
+    }
+    /* Additional styling for the image container */
+    .image-container {
+        position: relative;
+        display: inline-block;
+    }
+    .image-container:hover .overlay {
+        opacity: 1;
+    }
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    .image-container:hover .details {
+        bottom: 0;
+    }
+    .details {
+        position: absolute;
+        bottom: -50px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        transition: bottom 0.3s ease;
+    }
+    .details span {
+        color: #fff;
+        font-size: 16px;
+    }
+    .details h3 {
+        color: #fff;
+        font-size: 20px;
+        margin-top: 5px;
     }
 </style>
 </head>
@@ -61,11 +99,8 @@
 </div>
 
 <!-- Example usage -->
-<div class="list_inner">
-    <div class="image" onclick="openFullscreenImage('img/portfolio/Essentials.PNG', 'https://www.linkedin.com/in/developeraj/details/certifications/')">
-        <img src="img/thumbs/1-1.jpg" alt="" />
-        <div class="main" data-img-url="img/portfolio/Essentials.PNG"></div>
-    </div>
+<div class="image-container" onclick="openFullscreenImage('img/portfolio/Essentials.PNG', 'https://www.linkedin.com/in/developeraj/details/certifications/')">
+    <img src="img/thumbs/1-1.jpg" alt="" />
     <div class="overlay"></div>
     <div class="details">
         <span>Essentials</span>
