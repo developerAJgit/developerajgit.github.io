@@ -43,7 +43,7 @@
     <ul class="gallery_zoom">
         <li class="PowerAPPS">
             <div class="list_inner">
-                <div class="image" onclick="openFullscreenImage('img/portfolio/Essentials.PNG', 'https://www.linkedin.com/in/developeraj/details/certifications/')">
+                <div class="image" onclick="openFullscreenImage(event, 'img/portfolio/Essentials.PNG', 'https://www.linkedin.com/in/developeraj/details/certifications/')">
                     <img src="img/thumbs/1-1.jpg" alt="Image 1">
                     <div class="main" data-img-url="img/portfolio/Essentials.PNG"></div>
                 </div>
@@ -61,20 +61,18 @@
 <!-- Fullscreen image container -->
 <div class="fullscreen-image" onclick="closeFullscreen()">
     <span class="close-icon" onclick="closeFullscreen()">&times;</span>
+    <a id="fullscreen-link" href="#" target="_blank"></a>
     <img id="fullscreen-img" src="" alt="Fullscreen Image">
 </div>
 
 <script>
     // JavaScript function to open the image in fullscreen mode
-    function openFullscreenImage(imageSrc, link) {
+    function openFullscreenImage(event, imageSrc, link) {
         var fullscreenImg = document.getElementById("fullscreen-img");
         fullscreenImg.src = imageSrc;
+        document.getElementById("fullscreen-link").href = link;
         document.querySelector('.fullscreen-image').style.display = "block";
-        // Open the link only when clicking on the fullscreen image
-        document.querySelector('.fullscreen-image').addEventListener('click', function(event) {
-            event.stopPropagation();
-            window.open(link, '_blank');
-        });
+        event.stopPropagation();
     }
 
     // JavaScript function to close the fullscreen image
