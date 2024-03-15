@@ -709,7 +709,7 @@
 								</li>
 								<li class="PowerAPPS">
 									<div class="list_inner">
-										<div class="image" onclick="openFullscreenImage('img/portfolio/Essentials.PNG')">
+										<div class="image" onclick="openFullscreenImage('img/portfolio/Essentials.PNG', 'https://www.linkedin.com/in/developeraj/details/certifications/')">
 											<img src="img/thumbs/1-1.jpg" alt="" />
 											<div class="main" data-img-url="img/portfolio/Essentials.PNG"></div>
 										</div>
@@ -718,8 +718,7 @@
 											<span>Essentials</span>
 											<h3>LinkedIN</h3>
 										</div>
-										<a class="iknow_tm_full_link" target="_blank"
-											href="https://www.linkedin.com/in/developeraj/details/certifications/"></a>
+										<a class="iknow_tm_full_link" target="_blank" href="https://www.linkedin.com/in/developeraj/details/certifications/"></a>
 									</div>
 								</li>
 								<li class="PowerAPPS">
@@ -1623,17 +1622,14 @@
 			// Choose a default theme if no preference is stored
 			// (e.g., body.classList.add(lightThemeClass);)
 		}
-
-	</script>
-	<script>
-        function openFullscreenImage(imageUrl) {
+        function openFullscreenImage(imageUrl, linkUrl) {
             const fullscreenImage = document.createElement('div');
             fullscreenImage.classList.add('fullscreen-image');
             fullscreenImage.innerHTML = `
-                <div class="fullscreen-inner">
+                <a href="${linkUrl}" target="_blank">
                     <img src="${imageUrl}" alt="Fullscreen Image">
-                    <button onclick="closeFullscreenImage()">Close</button>
-                </div>
+                </a>
+                <button onclick="closeFullscreenImage()">Close</button>
             `;
             document.body.appendChild(fullscreenImage);
             document.body.style.overflow = 'hidden';
@@ -1641,12 +1637,11 @@
 
         function closeFullscreenImage() {
             const fullscreenImage = document.querySelector('.fullscreen-image');
-            if (fullscreenImage) {
-                fullscreenImage.remove();
-                document.body.style.overflow = 'auto';
-            }
+            fullscreenImage.remove();
+            document.body.style.overflow = 'auto';
         }
-    </script>
+	</script>
+	
 
 </body>
 
