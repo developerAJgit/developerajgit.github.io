@@ -709,12 +709,11 @@
 								</li>
 								<li class="PowerAPPS">
 									<div class="list_inner">
-										<div class="image">
+										<div class="image" onclick="openFullscreenImage('img/portfolio/Essentials.PNG')">
 											<img src="img/thumbs/1-1.jpg" alt="" />
 											<div class="main" data-img-url="img/portfolio/Essentials.PNG"></div>
 										</div>
 										<div class="overlay"></div>
-										<!-- <img class="svg" src="img/svg/social/vimeo.svg" alt="" /> -->
 										<div class="details">
 											<span>Essentials</span>
 											<h3>LinkedIN</h3>
@@ -1626,6 +1625,28 @@
 		}
 
 	</script>
+	<script>
+        function openFullscreenImage(imageUrl) {
+            const fullscreenImage = document.createElement('div');
+            fullscreenImage.classList.add('fullscreen-image');
+            fullscreenImage.innerHTML = `
+                <div class="fullscreen-inner">
+                    <img src="${imageUrl}" alt="Fullscreen Image">
+                    <button onclick="closeFullscreenImage()">Close</button>
+                </div>
+            `;
+            document.body.appendChild(fullscreenImage);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFullscreenImage() {
+            const fullscreenImage = document.querySelector('.fullscreen-image');
+            if (fullscreenImage) {
+                fullscreenImage.remove();
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
 
 </body>
 
