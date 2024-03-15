@@ -27,6 +27,13 @@
         left: 0;
         right: 0;
     }
+    .close-icon {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: #fff;
+        cursor: pointer;
+    }
 </style>
 </head>
 <body>
@@ -53,6 +60,7 @@
 
 <!-- Fullscreen image container -->
 <div class="fullscreen-image" onclick="closeFullscreen()">
+    <span class="close-icon" onclick="closeFullscreen()">&times;</span>
     <img id="fullscreen-img" src="" alt="Fullscreen Image">
 </div>
 
