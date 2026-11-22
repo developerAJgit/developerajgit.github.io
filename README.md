@@ -10,7 +10,11 @@ The site is hand-built static HTML, CSS and JavaScript, with no framework and no
 | Path | What it is |
 | --- | --- |
 | `index.html` | The page |
-| `assets/styles.css`, `assets/main.js` | Layout, theme, navigation, article list |
+| `assets/styles.css` | Design tokens for the four themes (Midnight, Ember, Jade, Sakura), glass and glow effects, layout |
+| `assets/main.js` | Navigation, reveal-on-scroll, article list, MVP figures |
+| `assets/fx.js` | Theme switcher, sky particles, cursor spotlight, card tilt, counters, featured article covers |
+| `brand.html`, `assets/brand.css`, `assets/brand.js` | Live UI brand kit: themes, colour, type, effects, components, motion, rules, tokens |
+| `assets/img/covers/` | Article cover art used in the Writing section |
 | `assets/architecture.js` | Interactive reference architecture |
 | `assets/articles.js` | Index of LinkedIn articles (title, date, URL, topic) |
 | `assets/data/mvp.json` | MVP figures shown on the page (see below) |

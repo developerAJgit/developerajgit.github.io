@@ -2,15 +2,6 @@
   'use strict';
   var root = document.documentElement;
 
-  // Theme toggle
-  document.getElementById('theme').addEventListener('click', function () {
-    var current = root.dataset.theme ||
-      (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    var next = current === 'dark' ? 'light' : 'dark';
-    root.dataset.theme = next;
-    try { localStorage.setItem('theme', next); } catch (e) {}
-  });
-
   // Mobile menu
   var menu = document.getElementById('menu');
   var links = document.getElementById('links');

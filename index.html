@@ -12,15 +12,23 @@
   <meta property="og:description" content="Microsoft MVP for Power Apps. Solution architecture across Power Platform, Dataverse, Azure and agentic AI, with a hands-on playground.">
   <meta property="og:image" content="https://developerajgit.github.io/assets/img/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#f5f2ec">
+  <meta name="theme-color" content="#060a1c">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%235b2be0'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-size='30' fill='white'%3EAG%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap&text=%E5%A3%B1%E5%BC%90%E5%8F%82%E8%82%86%E4%BC%8D%E9%99%B8%E6%BC%86%E6%8D%8C%E7%8E%96%E6%8B%BE%E8%87%AA%E5%B7%B1%E7%B4%B9%E4%BB%8B%E6%A0%84%E8%AA%89%E8%A8%AD%E8%A8%88%E4%BB%BB%E5%8B%99%E4%BF%AE%E8%A1%8C%E7%B5%8C%E6%AD%B4%E8%B3%87%E6%A0%BC%E5%B7%BB%E7%89%A9%E9%80%A3%E7%B5%A1%E5%BB%BA%E7%AF%89%E5%AE%B6%E5%A4%9C%E7%82%8E%E7%BF%A0%E6%A1%9C%E5%BF%8D%E5%8D%B0%E8%89%B2%E6%9B%B8%E4%BD%93%E5%8A%B9%E6%9E%9C%E9%83%A8%E5%93%81%E5%8B%95%E3%81%8D%E8%A6%8F%E5%89%87%E8%B1%A1%E5%BE%B4%E4%B8%BB%E9%A1%8C%E5%85%89%E9%81%93" rel="stylesheet">
   <link rel="stylesheet" href="assets/styles.css">
   <link rel="stylesheet" href="assets/playground.css">
   <script>
-    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t === 'dark') t = 'midnight';
+      if (t === 'light') t = 'sakura';
+      if (['midnight', 'ember', 'jade', 'sakura'].indexOf(t) < 0) t = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'sakura' : 'midnight';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
   </script>
   <script type="application/ld+json">
   {
@@ -39,6 +47,8 @@
   </script>
 </head>
 <body>
+  <div class="sky" aria-hidden="true"><div class="aurora a1"></div><div class="aurora a2"></div><div class="aurora a3"></div><div class="stars"></div><canvas id="fx"></canvas></div>
+  <div class="progress" aria-hidden="true"><i></i></div>
   <a class="skip" href="#main">Skip to content</a>
 
   <header class="nav" id="top">
@@ -55,8 +65,8 @@
         <a href="#contact">Contact</a>
       </nav>
       <div class="nav-actions">
-        <button class="icon-btn" id="theme" aria-label="Toggle colour theme" title="Toggle theme">
-          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.39 5.39 0 0 1-4.4 2.26 5.4 5.4 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>
+        <button class="icon-btn" id="theme" aria-label="Choose theme" title="Choose theme">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3a9 9 0 1 0 0 18c1.1 0 1.6-.9 1.2-1.8-.5-1-.1-2.2 1.1-2.2H17a4 4 0 0 0 4-4c0-5.5-4-10-9-10z"/><circle cx="7.5" cy="11" r="1.3" fill="currentColor"/><circle cx="10.5" cy="7" r="1.3" fill="currentColor"/><circle cx="15" cy="7.5" r="1.3" fill="currentColor"/></svg>
         </button>
         <button class="icon-btn menu-btn" id="menu" aria-label="Open menu" aria-expanded="false" aria-controls="links">
           <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -68,10 +78,11 @@
   <main id="main">
     <!-- HERO -->
     <section class="hero wrap">
+      <span class="hero-kanji" aria-hidden="true" lang="ja">建築家</span>
       <div class="hero-grid">
         <div class="hero-main">
           <p class="eyebrow"><span class="dot"></span> Open to Solutions &amp; Enterprise Architect roles</p>
-          <h1>I architect Power Platform solutions that hold up in production.</h1>
+          <h1>I architect Power Platform solutions that <span class="grad">hold up in production.</span></h1>
           <p class="lede">I'm <strong>Ajay Kumar Gannamaneni</strong>, a Microsoft MVP and Power Platform Architect at Synapx. I design enterprise apps, automation, integrations and AI agents across Power Platform, Dataverse, Azure, SharePoint and Business Central, with governance and ALM built in from day one.</p>
           <div class="cta">
             <a class="btn primary" href="#playground">Try the playground</a>
@@ -79,7 +90,8 @@
             <button type="button" class="btn ghost" data-open-tab="agent">Ask my agent</button>
           </div>
         </div>
-        <aside class="mvp-card" aria-label="Microsoft MVP award">
+        <div class="mvp-wrap">
+        <aside class="mvp-card aura" aria-label="Microsoft MVP award">
           <div class="mvp-photo">
             <img src="assets/img/mvp-award.jpg" alt="Ajay's Microsoft MVP award trophy for 2025 and 2026 to 2027" width="600" height="900">
             <span class="mvp-badge">Microsoft MVP · Power Apps</span>
@@ -91,6 +103,7 @@
             <a class="arrow" href="https://mvp.microsoft.com/en-US/MVP/profile/eef3cb38-607a-4bc5-ac4e-5697401e72ff" target="_blank" rel="noopener">Verify on Microsoft MVP</a>
           </div>
         </aside>
+        </div>
       </div>
       <dl class="stats">
         <div><dt>Years building</dt><dd>6+</dd></div>
@@ -103,8 +116,8 @@
     <!-- ABOUT -->
     <section class="section wrap" id="about">
       <div class="section-head">
-        <span class="num">01</span>
-        <h2>About</h2>
+        <span class="num" data-k="壱">01</span>
+        <h2 data-jp="自己紹介">About</h2>
       </div>
       <div class="about-grid">
         <div class="prose">
@@ -130,8 +143,8 @@
     <!-- MVP & COMMUNITY -->
     <section class="section wrap" id="mvp">
       <div class="section-head">
-        <span class="num">02</span>
-        <h2>MVP &amp; community</h2>
+        <span class="num" data-k="弐">02</span>
+        <h2 data-jp="栄誉">MVP &amp; community</h2>
       </div>
       <div class="mvp-grid">
         <div class="mvp-story">
@@ -198,8 +211,8 @@
     <!-- ARCHITECTURE -->
     <section class="section wrap" id="architecture">
       <div class="section-head">
-        <span class="num">03</span>
-        <h2>How I architect</h2>
+        <span class="num" data-k="参">03</span>
+        <h2 data-jp="設計">How I architect</h2>
       </div>
       <p class="section-intro">Tools change every release. These principles don't, and they shape every engagement I lead.</p>
       <ol class="principles">
@@ -220,55 +233,64 @@
     <!-- WORK -->
     <section class="section wrap" id="work">
       <div class="section-head">
-        <span class="num">04</span>
-        <h2>Selected work</h2>
+        <span class="num" data-k="肆">04</span>
+        <h2 data-jp="任務">Selected work</h2>
       </div>
-      <p class="section-intro">Client names are withheld. These are the kinds of problems I'm usually brought in to solve.</p>
+      <p class="section-intro">Client names are withheld. These are the kinds of missions I'm usually brought in to lead.</p>
+      <p class="mission-key"><span><i>S</i> Enterprise-scale, multi-team or multi-country</span><span><i class="a">A</i> Business-critical, single domain</span></p>
       <div class="work-grid">
         <article class="card work">
           <span class="kicker">Finance · Trading</span>
+          <span class="rank" aria-label="S-rank mission">S</span>
           <h3>Trade Management Platform</h3>
           <p>A Power Apps solution for managing physical and futures deals, extended with custom code components and Azure Functions where low-code alone wasn't enough.</p>
           <ul class="chips"><li>PCF</li><li>Azure Functions</li><li>Dataverse</li></ul>
         </article>
         <article class="card work">
           <span class="kicker">ERP · Procurement</span>
+          <span class="rank" aria-label="S-rank mission">S</span>
           <h3>Vendor Approval for Business Central</h3>
           <p>Dynamic, condition-based forms rolled out across multiple countries. It saves <strong>300+ minutes per request</strong> compared with the previous process.</p>
           <ul class="chips"><li>Business Central API</li><li>Power Automate</li><li>Multi-country</li></ul>
         </article>
         <article class="card work">
           <span class="kicker">Energy · Forecasting</span>
+          <span class="rank a" aria-label="A-rank mission">A</span>
           <h3>80-Year Project Forecasting</h3>
           <p>Complex SQL logic that projects 80 years of data to support strategic project decisions, with Power Apps as the front end for project submissions.</p>
           <ul class="chips"><li>SQL Server</li><li>Stored procedures</li><li>Power Apps</li></ul>
         </article>
         <article class="card work">
           <span class="kicker">Governance</span>
+          <span class="rank" aria-label="S-rank mission">S</span>
           <h3>Power Platform Governance App</h3>
           <p>Self-service environment creation and updates, licence and credit requests, and DLP policy management, all with an audit trail.</p>
           <ul class="chips"><li>CoE</li><li>DLP</li><li>Admin connectors</li></ul>
         </article>
         <article class="card work">
           <span class="kicker">Legal</span>
+          <span class="rank a" aria-label="A-rank mission">A</span>
           <h3>Case Management System</h3>
           <p>A replacement for a legacy client and matter management system, rebuilt on Power Platform with a clean data model and a migration path.</p>
           <ul class="chips"><li>Model-driven</li><li>Dataverse</li><li>Data migration</li></ul>
         </article>
         <article class="card work">
           <span class="kicker">Document Control</span>
+          <span class="rank a" aria-label="A-rank mission">A</span>
           <h3>RACI Document Management</h3>
           <p>A RACI-governed document management system in SharePoint, now being replicated across five teams.</p>
           <ul class="chips"><li>SharePoint</li><li>Term Store</li><li>JSON formatting</li></ul>
         </article>
         <article class="card work">
           <span class="kicker">Security · Access</span>
+          <span class="rank a" aria-label="A-rank mission">A</span>
           <h3>Contractor Network Access (CAMP)</h3>
           <p>Contractors request network access. User details are pre-filled from Microsoft Graph, and each request goes through multi-stage approvals.</p>
           <ul class="chips"><li>Graph API</li><li>Approvals</li><li>Adaptive Cards</li></ul>
         </article>
         <article class="card work">
           <span class="kicker">Compliance</span>
+          <span class="rank" aria-label="S-rank mission">S</span>
           <h3>User Access Reviews with ServiceNow</h3>
           <p>Automated access reviews across many applications, plus SharePoint access requests handled through the REST API and Adaptive Cards.</p>
           <ul class="chips"><li>ServiceNow API</li><li>SharePoint REST</li><li>Power Automate</li></ul>
@@ -279,11 +301,11 @@
     <!-- PLAYGROUND -->
     <section class="section wrap wide" id="playground">
       <div class="section-head">
-        <span class="num">05</span>
-        <h2>Playground</h2>
+        <span class="num" data-k="伍">05</span>
+        <h2 data-jp="修行">Playground</h2>
       </div>
       <p class="section-intro">Don't take my word for it: try the work. Nine hands-on sandboxes cover the full lifecycle. Design a solution, build it with flows, apps, agents and SharePoint, connect the data and APIs, then ship it through a release pipeline. Everything runs in your browser.</p>
-      <div class="pg" id="pg">
+      <div class="pg aura slow" id="pg">
         <div class="pg-tabs" role="tablist" aria-label="Choose a tool"></div>
         <div class="pg-body"></div>
       </div>
@@ -293,8 +315,8 @@
     <!-- EXPERIENCE -->
     <section class="section wrap" id="experience">
       <div class="section-head">
-        <span class="num">06</span>
-        <h2>Experience</h2>
+        <span class="num" data-k="陸">06</span>
+        <h2 data-jp="経歴">Experience</h2>
       </div>
       <ol class="timeline">
         <li>
@@ -348,8 +370,8 @@
     <!-- CREDENTIALS -->
     <section class="section wrap" id="credentials">
       <div class="section-head">
-        <span class="num">07</span>
-        <h2>Credentials</h2>
+        <span class="num" data-k="漆">07</span>
+        <h2 data-jp="資格">Credentials</h2>
       </div>
       <div class="cred-summary">
         <div><strong>19</strong><span>active Microsoft &amp; GitHub certifications</span></div>
@@ -423,10 +445,11 @@
     <!-- WRITING -->
     <section class="section wrap" id="writing">
       <div class="section-head">
-        <span class="num">08</span>
-        <h2>Writing</h2>
+        <span class="num" data-k="捌">08</span>
+        <h2 data-jp="巻物">Writing</h2>
       </div>
       <p class="section-intro">104 articles on LinkedIn, from canvas app techniques and SQL patterns to Copilot Studio agents and platform deprecations. Search them or filter by topic.</p>
+      <div class="scrolls" id="scrolls" aria-label="Featured articles"></div>
       <div class="filters">
         <label class="search">
           <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -444,8 +467,8 @@
     <!-- CONTACT -->
     <section class="section wrap contact" id="contact">
       <div class="section-head">
-        <span class="num">09</span>
-        <h2>Let's build something</h2>
+        <span class="num" data-k="玖">09</span>
+        <h2 data-jp="連絡">Let's build something</h2>
       </div>
       <p class="lede small">Hiring for a Solutions Architect, Enterprise Architect or senior Power Platform role? I'm also open to speaking invitations, community collaborations and mentoring. LinkedIn or email is the quickest way to reach me.</p>
       <div class="contact-links">
@@ -465,13 +488,14 @@
   <footer class="footer">
     <div class="wrap footer-inner">
       <span>© <span id="year">2026</span> Ajay Kumar Gannamaneni · Hand-built, no frameworks</span>
-      <a href="#top">Back to top ↑</a>
+      <nav aria-label="Footer"><a href="brand.html">Brand kit</a><a href="#top">Back to top ↑</a></nav>
     </div>
   </footer>
 
   <script src="assets/articles.js"></script>
   <script src="assets/main.js"></script>
   <script src="assets/architecture.js"></script>
+  <script src="assets/fx.js"></script>
   <script src="assets/powerfx.js"></script>
   <script src="assets/playground/core.js"></script>
   <script src="assets/playground/architect.js"></script>

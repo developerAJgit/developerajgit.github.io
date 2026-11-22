@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brand Kit · Ajay Kumar Gannamaneni</title>
+  <meta name="description" content="UI brand kit for Ajay Kumar Gannamaneni: themes, colour, typography, effects, components, motion and usage rules.">
+  <meta name="theme-color" content="#060a1c">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%234cc9ff'/%3E%3Cstop offset='.55' stop-color='%238b5cf6'/%3E%3Cstop offset='1' stop-color='%23f5b544'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='50%25' y='57%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-weight='700' font-size='26' fill='%2303111f'%3EAG%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap&text=%E5%A3%B1%E5%BC%90%E5%8F%82%E8%82%86%E4%BC%8D%E9%99%B8%E6%BC%86%E6%8D%8C%E7%8E%96%E6%8B%BE%E8%87%AA%E5%B7%B1%E7%B4%B9%E4%BB%8B%E6%A0%84%E8%AA%89%E8%A8%AD%E8%A8%88%E4%BB%BB%E5%8B%99%E4%BF%AE%E8%A1%8C%E7%B5%8C%E6%AD%B4%E8%B3%87%E6%A0%BC%E5%B7%BB%E7%89%A9%E9%80%A3%E7%B5%A1%E5%BB%BA%E7%AF%89%E5%AE%B6%E5%A4%9C%E7%82%8E%E7%BF%A0%E6%A1%9C%E5%BF%8D%E5%8D%B0%E8%89%B2%E6%9B%B8%E4%BD%93%E5%8A%B9%E6%9E%9C%E9%83%A8%E5%93%81%E5%8B%95%E3%81%8D%E8%A6%8F%E5%89%87%E8%B1%A1%E5%BE%B4%E4%B8%BB%E9%A1%8C%E5%85%89%E9%81%93" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/brand.css">
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t === 'dark') t = 'midnight';
+      if (t === 'light') t = 'sakura';
+      if (['midnight', 'ember', 'jade', 'sakura'].indexOf(t) < 0) t = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'sakura' : 'midnight';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+</head>
+<body>
+  <div class="sky" aria-hidden="true"><div class="aurora a1"></div><div class="aurora a2"></div><div class="aurora a3"></div><div class="stars"></div><canvas id="fx"></canvas></div>
+  <div class="progress" aria-hidden="true"><i></i></div>
+
+  <header class="nav" id="top">
+    <div class="wrap nav-inner">
+      <a class="brand" href="index.html" aria-label="Back to portfolio"><span class="mark">AG</span><span class="brand-name">Brand Kit</span></a>
+      <nav class="bk-toc" aria-label="Brand kit sections">
+        <a href="#identity">Identity</a><a href="#color">Colour</a><a href="#type">Type</a><a href="#effects">Effects</a><a href="#components">Components</a><a href="#motion">Motion</a><a href="#rules">Rules</a><a href="#tokens">Tokens</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" id="theme" aria-label="Choose theme" title="Choose theme">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3a9 9 0 1 0 0 18c1.1 0 1.6-.9 1.2-1.8-.5-1-.1-2.2 1.1-2.2H17a4 4 0 0 0 4-4c0-5.5-4-10-9-10z"/><circle cx="7.5" cy="11" r="1.3" fill="currentColor"/><circle cx="10.5" cy="7" r="1.3" fill="currentColor"/><circle cx="15" cy="7.5" r="1.3" fill="currentColor"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- COVER -->
+    <section class="bk-cover wrap">
+      <span class="hero-kanji" aria-hidden="true" lang="ja">光道</span>
+      <p class="eyebrow"><span class="dot"></span> UI Brand Kit · v1.0 · November 2026</p>
+      <h1 class="bk-title">The <span class="grad">Shinobi Architect</span> design system</h1>
+      <p class="lede">An anime-inspired visual identity for Ajay Kumar Gannamaneni: night skies, glowing energy and frosted glass, built on the disciplined structure of an enterprise architect. Four themes share one set of tokens, so every component works in every theme.</p>
+      <div class="bk-essence">
+        <div class="card"><span class="kicker">Disciplined</span><p>Like a shinobi: precise, quiet, prepared. Layouts are calm and structured; energy is saved for the moments that matter.</p></div>
+        <div class="card"><span class="kicker">Generous</span><p>Like a sensei: everything teaches. Copy is plain English, and every effect has a purpose.</p></div>
+        <div class="card"><span class="kicker">Architected</span><p>Like the work itself: tokens, components and rules, so the brand scales without drifting.</p></div>
+      </div>
+    </section>
+
+    <!-- IDENTITY -->
+    <section class="section wrap" id="identity">
+      <div class="section-head"><span class="num" data-k="印">01</span><h2>Identity</h2></div>
+      <div class="bk-grid-3">
+        <figure class="card bk-logo">
+          <div class="bk-stage"><span class="mark bk-mark-xl">AG</span></div>
+          <figcaption><b>Primary mark</b><span>Gradient tile with an inner glow. Use on dark and light backgrounds. Minimum size 24px.</span></figcaption>
+        </figure>
+        <figure class="card bk-logo">
+          <div class="bk-stage"><span class="bk-mark-outline">AG</span></div>
+          <figcaption><b>Outline mark</b><span>For busy imagery, embossing or single-colour print. The stroke uses the accent colour.</span></figcaption>
+        </figure>
+        <figure class="card bk-logo">
+          <div class="bk-stage"><span class="bk-seal" lang="ja">建</span></div>
+          <figcaption><b>Hanko seal · 建</b><span>"Build" or "establish". Use it as a signature on article covers, slides and certificates, never as the primary logo.</span></figcaption>
+        </figure>
+      </div>
+      <div class="bk-grid-2 bk-mt">
+        <div class="card">
+          <span class="kicker">Wordmark</span>
+          <p class="bk-wordmark">Ajay Kumar Gannamaneni</p>
+          <p class="bk-wordmark-sub">Microsoft MVP · Power Platform Architect</p>
+          <p class="muted bk-note">Chakra Petch 600. Use the full name on first mention; "Ajay" in conversational copy.</p>
+        </div>
+        <div class="card">
+          <span class="kicker">Clear space &amp; sizing</span>
+          <div class="bk-clear"><span class="mark">AG</span></div>
+          <p class="muted bk-note">Keep clear space equal to half the mark's height on every side. Never stretch, rotate or recolour the gradient outside the theme palettes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLOR -->
+    <section class="section wrap" id="color">
+      <div class="section-head"><span class="num" data-k="色">02</span><h2>Colour &amp; themes</h2></div>
+      <p class="section-intro">Each theme is a complete palette. The site defaults to Midnight Chakra, and to Sakura Dawn for visitors whose system is set to light mode. Click a theme to apply it to this page.</p>
+      <div class="bk-themes" id="bk-themes"></div>
+      <h3 class="sub-h bk-mt">Contrast checks</h3>
+      <p class="muted bk-note">Calculated live from each theme's tokens. AA requires 4.5:1 for body text and 3:1 for large text and UI.</p>
+      <div class="bk-contrast" id="bk-contrast"></div>
+    </section>
+
+    <!-- TYPE -->
+    <section class="section wrap" id="type">
+      <div class="section-head"><span class="num" data-k="書">03</span><h2 data-jp="書体">Typography</h2></div>
+      <div class="bk-type">
+        <div class="card">
+          <span class="kicker">Display · Chakra Petch 600–700</span>
+          <p class="bk-t1">Systems that hold up</p>
+          <p class="bk-t2">Section headline 52 / 1.05</p>
+          <p class="bk-t3">Card title 19 / 1.3</p>
+          <p class="muted bk-note">Angular, HUD-like and technical. Headlines, numbers, card titles and the wordmark.</p>
+        </div>
+        <div class="card">
+          <span class="kicker">Body · IBM Plex Sans 400–600</span>
+          <p class="bk-body">Body copy is set at 17px with a 1.65 line height. Keep paragraphs short, sentences plain and claims specific. The design carries the energy; the words carry the facts.</p>
+          <span class="kicker bk-mt-s">Mono · IBM Plex Mono 400–500</span>
+          <p class="bk-mono">LABELS · KICKERS · CODE · 1.4.0.15</p>
+        </div>
+        <div class="card">
+          <span class="kicker">Accent · Yuji Syuku (brush)</span>
+          <p class="bk-brush" lang="ja">壱 弐 参 修行 巻物</p>
+          <p class="muted bk-note">Kanji accents only: section numerals and subtitles. Never for body text, and always paired with the English word.</p>
+        </div>
+      </div>
+      <table class="bk-table">
+        <thead><tr><th scope="col">Token</th><th scope="col">Size</th><th scope="col">Weight</th><th scope="col">Use</th></tr></thead>
+        <tbody>
+          <tr><td><code>display-xl</code></td><td>40–72px fluid</td><td>600</td><td>Hero headline</td></tr>
+          <tr><td><code>display-l</code></td><td>32–52px fluid</td><td>600</td><td>Section headings</td></tr>
+          <tr><td><code>display-m</code></td><td>19–28px</td><td>600</td><td>Card and panel titles</td></tr>
+          <tr><td><code>body</code></td><td>17px / 1.65</td><td>400</td><td>Paragraphs</td></tr>
+          <tr><td><code>small</code></td><td>13.5–15px</td><td>400–500</td><td>Supporting copy, captions</td></tr>
+          <tr><td><code>label</code></td><td>11.5–13px mono, uppercase, +0.08em</td><td>500</td><td>Kickers, metadata, tags</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- EFFECTS -->
+    <section class="section wrap" id="effects">
+      <div class="section-head"><span class="num" data-k="効">04</span><h2 data-jp="効果">Effects</h2></div>
+      <p class="section-intro">The signature effects. Move your pointer over the specimens: they're the same CSS the site uses.</p>
+      <div class="bk-grid-3">
+        <div class="bk-fx">
+          <div class="card bk-specimen"><span class="kicker">Frosted glass</span><b>Glass panel</b><span class="muted">Translucent surface, 16px blur, 150% saturation, inset top highlight.</span></div>
+          <pre class="bk-code"><code>background: linear-gradient(150deg, var(--surface-2), var(--surface));
+backdrop-filter: blur(16px) saturate(150%);
+border: 1px solid var(--line);
+box-shadow: inset 0 1px 0 rgb(255 255 255 / .07),
+            0 24px 60px -30px rgb(0 0 0 / .75);</code></pre>
+        </div>
+        <div class="bk-fx">
+          <div class="card aura bk-specimen"><span class="kicker">Aura border</span><b>Rotating energy ring</b><span class="muted">A conic gradient masked to a 1.5px ring, animated with a registered <code>--ang</code> property.</span></div>
+          <pre class="bk-code"><code>.aura::after {
+  background: conic-gradient(from var(--ang), transparent 0 50%,
+    var(--accent) 68%, var(--accent-2) 80%, var(--accent-3) 90%, transparent);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  animation: aura-spin 6s linear infinite;
+}</code></pre>
+        </div>
+        <div class="bk-fx">
+          <div class="card bk-specimen"><span class="kicker">Spotlight</span><b>Cursor light</b><span class="muted">A radial glow follows the pointer across every glass card, set through <code>--mx</code> and <code>--my</code>.</span></div>
+          <pre class="bk-code"><code>background:
+  radial-gradient(420px circle at var(--mx) var(--my),
+    color-mix(in srgb, var(--accent) 14%, transparent), transparent 46%),
+  linear-gradient(150deg, var(--surface-2), var(--surface));</code></pre>
+        </div>
+        <div class="bk-fx">
+          <div class="bk-specimen bk-center"><a class="btn primary" href="#effects">Shine sweep</a></div>
+          <pre class="bk-code"><code>.btn.primary::after {
+  background: linear-gradient(100deg, transparent, rgb(255 255 255 / .55), transparent);
+  transform: skewX(-20deg); left: -60%;
+}
+.btn.primary:hover::after { left: 130%; }</code></pre>
+        </div>
+        <div class="bk-fx">
+          <div class="bk-specimen bk-center"><span class="bk-glowtext grad">修行</span></div>
+          <pre class="bk-code"><code>.grad {
+  background: var(--grad);
+  background-clip: text; color: transparent;
+}
+filter: drop-shadow(0 0 22px color-mix(in srgb, var(--accent) 38%, transparent));</code></pre>
+        </div>
+        <div class="bk-fx">
+          <div class="bk-specimen bk-center"><div class="bk-speed"><span class="mark">AG</span></div></div>
+          <pre class="bk-code"><code>/* Manga speed lines behind hero objects */
+background: repeating-conic-gradient(
+  color-mix(in srgb, var(--accent) 22%, transparent) 0deg 1.2deg,
+  transparent 1.2deg 9deg);
+mask: radial-gradient(circle, transparent 34%, #000 36%, transparent 70%);</code></pre>
+        </div>
+      </div>
+      <div class="bk-grid-3 bk-mt">
+        <div class="card"><span class="kicker">Atmosphere</span><h3>Aurora sky</h3><p>Three blurred colour fields drift slowly behind the page, with a star layer on dark themes. They give depth without competing with content.</p></div>
+        <div class="card"><span class="kicker">Particles</span><h3>Sparks, embers, fireflies, petals</h3><p>A light canvas layer: rising energy sparks in dark themes, falling sakura petals in Sakura Dawn. 14–36 particles, paused when the tab is hidden.</p></div>
+        <div class="card"><span class="kicker">HUD</span><h3>Corner brackets</h3><p>Stat tiles use anime-HUD corner marks in the accent colour, so numbers read like a status screen.</p></div>
+      </div>
+    </section>
+
+    <!-- COMPONENTS -->
+    <section class="section wrap" id="components">
+      <div class="section-head"><span class="num" data-k="部">05</span><h2 data-jp="部品">Components</h2></div>
+      <div class="bk-grid-2">
+        <div class="card">
+          <span class="kicker">Buttons</span>
+          <div class="bk-row"><a class="btn primary" href="#components">Primary</a><a class="btn" href="#components">Secondary</a><a class="btn ghost" href="#components">Ghost</a></div>
+          <p class="muted bk-note">One primary action per view. Labels are verbs: "Try the playground", not "Click here".</p>
+        </div>
+        <div class="card">
+          <span class="kicker">Chips, tags &amp; status</span>
+          <div class="bk-row"><span class="eyebrow bk-inline"><span class="dot"></span> Open to roles</span><span class="topic" aria-pressed="true">Selected</span><span class="topic">Topic</span></div>
+          <ul class="chips bk-mt-s"><li>Dataverse</li><li>Azure Functions</li><li>PCF</li></ul>
+        </div>
+        <div class="card" style="position:relative">
+          <span class="rank" aria-hidden="true">S</span>
+          <span class="kicker">Mission card</span>
+          <h3>Rank badges</h3>
+          <p><b>S</b> for enterprise-scale, multi-team or multi-country work; <b>A</b> for business-critical, single-domain work. Always explain the ranks in a key.</p>
+          <div class="bk-row"><span class="rank" style="position:static">S</span><span class="rank a" style="position:static">A</span></div>
+        </div>
+        <div class="card">
+          <span class="kicker">Section header</span>
+          <div class="section-head bk-sh"><span class="num" data-k="伍">05</span><h2 data-jp="修行">Playground</h2></div>
+          <p class="muted bk-note">Kanji numeral, mono index, display title and brush subtitle. The kanji must be correct; see the table below.</p>
+        </div>
+      </div>
+      <dl class="stats bk-mt">
+        <div><dt>HUD stat tile</dt><dd>104</dd></div>
+        <div><dt>Counts up on reveal</dt><dd>23</dd></div>
+        <div><dt>Corner brackets</dt><dd>6+</dd></div>
+        <div><dt>Tabular numbers</dt><dd>3</dd></div>
+      </dl>
+    </section>
+
+    <!-- MOTION -->
+    <section class="section wrap" id="motion">
+      <div class="section-head"><span class="num" data-k="動">06</span><h2 data-jp="動き">Motion</h2></div>
+      <table class="bk-table">
+        <thead><tr><th scope="col">Pattern</th><th scope="col">Duration</th><th scope="col">Easing</th><th scope="col">Where</th></tr></thead>
+        <tbody>
+          <tr><td>Micro interaction</td><td>150–250ms</td><td><code>cubic-bezier(.2,.8,.2,1)</code></td><td>Hover, focus, chip toggles</td></tr>
+          <tr><td>Card lift &amp; glow</td><td>300–350ms</td><td>same</td><td>Cards, buttons, covers</td></tr>
+          <tr><td>Section reveal</td><td>800ms, blur 4px → 0</td><td>same</td><td>Content entering the viewport</td></tr>
+          <tr><td>Hero word rise</td><td>900ms, 70ms stagger</td><td>same</td><td>Hero headline only</td></tr>
+          <tr><td>Aura ring</td><td>6s loop (12s on large panels)</td><td>linear</td><td>MVP card, playground</td></tr>
+          <tr><td>Aurora drift</td><td>26–38s alternate</td><td>same</td><td>Background only</td></tr>
+        </tbody>
+      </table>
+      <p class="muted bk-note">With <code>prefers-reduced-motion</code>, every loop stops, reveals are instant and particles are off. Content never depends on animation.</p>
+    </section>
+
+    <!-- MOTIFS & RULES -->
+    <section class="section wrap" id="rules">
+      <div class="section-head"><span class="num" data-k="規">07</span><h2 data-jp="規則">Motifs &amp; rules</h2></div>
+      <div class="bk-grid-2">
+        <div class="card">
+          <span class="kicker">Kanji reference</span>
+          <table class="bk-table bk-kanji">
+            <tbody>
+              <tr><td lang="ja">壱 弐 参 肆 伍 陸 漆 捌 玖</td><td>Formal numerals 1–9 (section numbers)</td></tr>
+              <tr><td lang="ja">自己紹介</td><td>Self-introduction · About</td></tr>
+              <tr><td lang="ja">栄誉</td><td>Honour · MVP &amp; community</td></tr>
+              <tr><td lang="ja">設計</td><td>Design · Architecture</td></tr>
+              <tr><td lang="ja">任務</td><td>Mission · Work</td></tr>
+              <tr><td lang="ja">修行</td><td>Training · Playground</td></tr>
+              <tr><td lang="ja">経歴</td><td>Career · Experience</td></tr>
+              <tr><td lang="ja">資格</td><td>Qualifications · Credentials</td></tr>
+              <tr><td lang="ja">巻物</td><td>Scrolls · Writing</td></tr>
+              <tr><td lang="ja">連絡</td><td>Contact</td></tr>
+              <tr><td lang="ja">建築家</td><td>Architect · hero watermark</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="bk-rules">
+          <div class="card bk-do"><span class="kicker">Do</span><ul class="ticks">
+            <li>Use original art: night skies, glowing energy, gold scrolls and the hooded hero from your covers.</li>
+            <li>Keep anime flavour in metaphor and accents ("summon", "scroll", "mission") while the substance stays professional.</li>
+            <li>Put the MVP award and real outcomes first; effects support them.</li>
+            <li>Check contrast in every theme before shipping a new colour.</li>
+          </ul></div>
+          <div class="card bk-dont"><span class="kicker">Don't</span><ul class="ticks">
+            <li>Use characters, logos or symbols from existing anime or manga series.</li>
+            <li>Alter the Microsoft MVP logo or use it as the site's logo; show it as earned, in photos or official badges.</li>
+            <li>Stack more than one animated border in the same view.</li>
+            <li>Set body text in the brush typeface or use untranslated kanji.</li>
+          </ul></div>
+        </div>
+      </div>
+      <h3 class="sub-h bk-mt">Imagery</h3>
+      <p class="muted bk-note">Square 1:1 covers in the cinematic night-sky style: deep blue and violet skies, glowing UI panels, gold highlights, and the original hooded hero facing the system he is building.</p>
+      <div class="bk-covers">
+        <img src="assets/img/covers/outbox-pattern.jpg" alt="Article cover: The Dataverse Transactional Outbox Pattern" loading="lazy">
+        <img src="assets/img/covers/copilot-canvas.jpg" alt="Article cover: Copilot in Canvas Apps" loading="lazy">
+        <img src="assets/img/covers/summoning-portal.jpg" alt="Article cover: The Summoning Portal" loading="lazy">
+        <img src="assets/img/covers/bc-run-action.jpg" alt="Article cover: Summon the Run action" loading="lazy">
+      </div>
+    </section>
+
+    <!-- TOKENS -->
+    <section class="section wrap" id="tokens">
+      <div class="section-head"><span class="num" data-k="主">08</span><h2 data-jp="主題">Tokens</h2></div>
+      <p class="section-intro">The source of truth lives in <code>assets/styles.css</code>. Each theme sets the same variables, and components only read variables, never raw colours.</p>
+      <div class="bk-tokens">
+        <div class="bk-tok-bar"><span id="bk-tok-name">Midnight Chakra</span><button type="button" class="btn small-btn" id="bk-copy">Copy CSS</button></div>
+        <pre class="bk-code bk-tok" id="bk-tok"></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <span>Brand kit v1.0 · Ajay Kumar Gannamaneni</span>
+      <nav aria-label="Footer"><a href="index.html">Portfolio</a><a href="#top">Back to top ↑</a></nav>
+    </div>
+  </footer>
+
+  <script src="assets/fx.js"></script>
+  <script src="assets/brand.js"></script>
+</body>
+</html>
