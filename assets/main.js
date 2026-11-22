@@ -43,12 +43,36 @@
     var reveal = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); reveal.unobserve(en.target); } });
     }, { rootMargin: '0px 0px -8% 0px' });
-    document.querySelectorAll('.section-head, .card, .timeline li, .cred-summary > div, .contact-card').forEach(function (el) {
+    document.querySelectorAll('.section-head, .card, .timeline > li, .cred-summary > div, .contact-card, .principles > li, .impact > div').forEach(function (el) {
       el.classList.add('reveal'); reveal.observe(el);
     });
   }
 
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Hide the floating "Ask my agent" button while the playground is on screen.
+  var fab = document.querySelector('.fab'), pg = document.getElementById('playground');
+  if (fab && pg && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) { fab.classList.toggle('hide', entries[0].isIntersecting); }, { threshold: 0.15 }).observe(pg);
+  }
+
+  // MVP figures live in one data file (assets/data/mvp.json), fetched fresh on every visit,
+  // so updating that file updates every place the number appears.
+  var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  function applyMvp(d) {
+    var count = d.powerAppsMvpsInIndia, p = String(d.asOf || '').split('-');
+    var asOfLabel = p.length > 1 ? MONTHS[+p[1] - 1] + ' ' + p[0] : 'December 2025';
+    window.MVP_DATA = { count: count, asOfLabel: asOfLabel };
+    document.querySelectorAll('[data-mvp-count]').forEach(function (el) { el.textContent = count; });
+    document.querySelectorAll('[data-mvp-asof]').forEach(function (el) { el.textContent = asOfLabel; });
+  }
+  window.MVP_DATA = { count: 11, asOfLabel: 'December 2025' };
+  if (window.fetch && location.protocol !== 'file:') {
+    fetch('assets/data/mvp.json', { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) { if (d && d.powerAppsMvpsInIndia) applyMvp(d); })
+      .catch(function () { /* keep the built-in figures */ });
+  }
 
   // Articles
   var data = window.ARTICLES || [];
